@@ -85,14 +85,6 @@ if ($bin1Len >=  $bin2Len) {
     $bin1 = str_repeat('0', $countDiff) . $bin1;
 }
 
-//convert strings to array
-$bin1 = str_split($bin1);
-$bin2 = str_split($bin2);
-
-echo '<pre>';
-print_r($bin1);
-print_r($bin2);
-
-$res = array_diff_assoc($bin1, $bin2);
+$res = array_diff_assoc(str_split($bin1), str_split($bin2));
 return count($res);
 ```
