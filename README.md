@@ -41,10 +41,6 @@ This project includes docker files, you can setup the project using `docker-comp
 docker-compose build --no-cache
 docker-compose up -d
 ```
-Migrate database
-```sh
-docker-compose exec app php artisan migrate
-```
 
 rename or copy .env.example to .env or run command
 
@@ -56,6 +52,11 @@ Install vendor files
 
 ```sh
 docker-compose exec app composer install
+```
+
+Migrate database (make sure you have a database named `kumu_exam_db` or whatever you have set in the `docker-compose.yml` file)
+```sh
+docker-compose exec app php artisan migrate
 ```
 
 By default, the Docker will expose port 8100, so change this within the `docker-compose.yml` if necessary.
