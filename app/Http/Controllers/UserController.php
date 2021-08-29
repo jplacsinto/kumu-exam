@@ -24,12 +24,15 @@ class UserController extends Controller
             'password' => 'required'
         ]);
         $user = User::where('email', $request->input('email'))->first();
-        if (Hash::check($request->input('password'), $user->password)) {
+        if ($user && Hash::check($request->input('password'), $user->password)) {
              $apiToken = base64_encode(Str::random(40));
              User::where('email', $request->input('email'))->update(['api_token' => $apiToken]);
              return response()->json(['status' => 'success','api_token' => $apiToken]);
         }
-        return response()->json(['status' => 'fail'], 401);
+        return response()->json([
+            'status' => 'fail',
+            'message' => 'Invalid credentials'
+        ], 401);
     }
 
     /**

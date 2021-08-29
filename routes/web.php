@@ -13,6 +13,6 @@ use Illuminate\Http\Request;
 | and give it the Closure to call when that URI is requested.
 |
 */
-$router->get('/login', 'UserController@authenticate');
+$router->post('/login', 'UserController@authenticate');
 $router->post('/register', 'UserController@register');
 $router->get('/github/users/{usernames}', 'GithubController@users');
