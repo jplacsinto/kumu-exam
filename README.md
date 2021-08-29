@@ -62,3 +62,36 @@ By default, the Docker will expose port 8100, so change this within the `docker-
 ```ssh
 http://localhost:8100
 ```
+
+## Challenge 2 Answer
+```php
+//given values
+$x = 1;
+$y = 2;
+
+//convert to binary
+$bin1 = decbin($x);
+$bin2 = decbin($y);
+
+//makes sure that x and y has same string length
+$bin1Len = strlen($bin1);
+$bin2Len = strlen($bin2);
+$countDiff = abs($bin1Len - $bin2Len);
+//prepend 0
+if ($bin1Len >=  $bin2Len) {
+    $bin2 = str_repeat('0', $countDiff) . $bin2;
+} else {
+    $bin1 = str_repeat('0', $countDiff) . $bin1;
+}
+
+//convert strings to array
+$bin1 = str_split($bin1);
+$bin2 = str_split($bin2);
+
+echo '<pre>';
+print_r($bin1);
+print_r($bin2);
+
+$res = array_diff_assoc($bin1, $bin2);
+return count($res);
+```
